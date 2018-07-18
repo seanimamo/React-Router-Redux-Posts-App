@@ -37,3 +37,8 @@ div.container_postsIndex> table > tbody > tr{
 div.container_postsIndex> table > tbody > tr:hover{
     background-color:rgba(50,50,50,1);
 }
+
+.noPosts_postsIndex{
+    white-space:nowrap;
+    color:red;
+}

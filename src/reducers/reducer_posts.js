@@ -7,7 +7,7 @@ import _ from 'lodash';
 export default function(state = {},action){
     switch (action.type){
         case FETCH_POSTS:
-        console.log('running reducer FETCH_POSTS', 'Payload Is:',action.payload);
+        //console.log('running reducer FETCH_POSTS', 'Payload Is:',action.payload);
 
         //non-lodash method of creating our object of objects
         //    return action.payload.reduce( (posts,postsAPIObject) => 
@@ -19,6 +19,5 @@ export default function(state = {},action){
         return _.mapKeys(action.payload.data, 'id');
     default:
         return state;
-
     }
 }

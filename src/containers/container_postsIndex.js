@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchPosts} from '../actions/action_fetchPost'
+import _ from 'lodash';
 
 class PostsIndex extends Component{
     
@@ -33,9 +34,14 @@ class PostsIndex extends Component{
             });
     }
 
+    isPromise = (object) => (object ? true : false);
+    
+
     render(){
         console.log(`Render Count: ${this.state.renderCount}`);
-        return( 
+        if( _.size(this.props.posts) == 0 && this.state.renderCount == 1){
+            console.log('1size of props: ', _.size(this.props.posts));
+            return(
             <div className="container_postsIndex">
                 <h1><center>This is the posts index</center></h1>
                 <table className="table">
@@ -47,11 +53,34 @@ class PostsIndex extends Component{
                         </tr>
                     </thead>
                     <tbody>
-                        {this.renderPostsList()}
+                        <tr key={'noPosts'} className="noPosts_postsIndex">
+                            <td>Fetching Your Posts. Please Wait... </td>
+                        </tr>
                     </tbody>
                 </table>
             </div>
-        );
+            );
+        }
+        else{
+            console.log('2size of props: ', _.size(this.props.posts));
+            return( 
+                <div className="container_postsIndex">
+                    <h1><center>This is the posts index</center></h1>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Post Title</th>
+                                <th>Post Category</th>
+                                <th>Post Content</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {this.renderPostsList()}
+                        </tbody>
+                    </table>
+                </div>
+            );
+        }
     }
 }
 
