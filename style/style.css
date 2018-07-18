@@ -1,0 +1,39 @@
+.container_background{
+    width:100%;
+    height:100vh;
+   /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#60646c+0,0f1e39+100 */
+    background: #60646c; /* Old browsers */
+    background: -moz-linear-gradient(top, #60646c 0%, #0f1e39 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #60646c 0%,#0f1e39 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #60646c 0%,#0f1e39 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#60646c', endColorstr='#0f1e39',GradientType=0 ); /* IE6-9 */
+
+}
+
+.container_postsIndex{
+color:white;
+
+}
+
+div.container_postsIndex> table > tbody > tr > td, th {
+    vertical-align: middle !important;
+    text-align:center !important;
+}
+
+
+
+.container{
+    width:100%;
+    height:100%;
+    border:1px solid black;
+    background-color:rgba(0,0,0,0.6);
+    color:white;
+}
+
+div.container_postsIndex> table > tbody > tr{
+    background-color:rgba(50,50,50,0.6);
+}
+
+div.container_postsIndex> table > tbody > tr:hover{
+    background-color:rgba(50,50,50,1);
+}
