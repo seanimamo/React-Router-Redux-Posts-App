@@ -40,15 +40,19 @@ div.container_postsIndex> table > tbody > tr:hover{
     color:red;
 }
 
-
 .container_newPost {
     color:white;
+    background-color:none;
 }
 
 .container_newPost form a{
     margin:5px;
 }
 
-.container_postDetail{
+.container_postDetail,
+.container_postDetail > hr{
     color:white;
+}
+.container_postDetail a {
+    margin:5px;
 }
