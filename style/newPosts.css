@@ -1,0 +1,38 @@
+.wrapper_header{
+    display:flex;
+    flex-flow: row wrap;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* We tell all items to be 100% width, via flex-basis */
+.wrapper > * {
+    flex: 1 100%;
+  }
+
+.header-main{
+    background:yellow;
+}
+
+.header-left{
+    background:red;
+}
+.header-right{
+    background:blue;
+}
+
+/* Medium screens */
+@media all and (min-width: 600px) {
+    /* We tell both sidebars to share a row */
+    .header-sideBar { flex: 1 auto; }
+}
+  
+  /* Large screens */
+  @media all and (min-width: 800px) {
+    /* We invert order of first sidebar and main
+     * And tell the main element to take twice as much width as the other two sidebars 
+     */
+    .header-left { order: 1; }
+    .header-main  { order: 2; }
+    .header-right { order: 3; }
+  }

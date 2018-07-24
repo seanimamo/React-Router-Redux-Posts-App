@@ -2,11 +2,11 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {fetchPosts} from '../actions/action_fetchPost'
 import _ from 'lodash';
+import {Link} from 'react-router-dom';
 
 class PostsIndex extends Component{
     
-    //lifecycle function called after component is rendered
-    //since we want to render our page first, THEN fetch the data and update the state and thus rerender the page as needed
+   
     constructor(props){
         super(props);
 
@@ -18,6 +18,8 @@ class PostsIndex extends Component{
         return {renderCount: prevState.renderCount+=1};
     }
     
+    //lifecycle function called after component is rendered
+    //since we want to render our page first, THEN fetch the data and update the state and thus rerender the page as needed
     componentDidMount(){
         this.props.fetchPosts();
     }
@@ -26,7 +28,7 @@ class PostsIndex extends Component{
         return _.map( this.props.posts, data => {
                 return(
                     <tr key={data.id}>
-                    <td>{data.title}</td>
+                    <td><Link to={`posts/${data.id}`} > {data.title} </Link> </td>
                     <td>{data.categories}</td>
                     <td>{data.content}</td>
                 </tr>
@@ -34,16 +36,13 @@ class PostsIndex extends Component{
             });
     }
 
-    isPromise = (object) => (object ? true : false);
-    
 
     render(){
         console.log(`Render Count: ${this.state.renderCount}`);
         if( _.size(this.props.posts) == 0 && this.state.renderCount == 1){
-            console.log('1size of props: ', _.size(this.props.posts));
             return(
             <div className="container_postsIndex">
-                <h1><center>This is the posts index</center></h1>
+                <h1>Your Posts Index</h1><Link to="/posts/new" className="btn btn-info"> New Post </Link>
                 <table className="table">
                     <thead>
                         <tr>
@@ -62,10 +61,11 @@ class PostsIndex extends Component{
             );
         }
         else{
-            console.log('2size of props: ', _.size(this.props.posts));
             return( 
                 <div className="container_postsIndex">
-                    <h1><center>This is the posts index</center></h1>
+
+                <center><h1>Your Posts Index</h1><Link to="/posts/new" className="btn btn-info"> Add a New Post </Link> </center>
+
                     <table className="table">
                         <thead>
                             <tr>
@@ -84,13 +84,29 @@ class PostsIndex extends Component{
     }
 }
 
+/* Header to be used when install CSS modules for component level css files
+           <div className="wrapper_header"> 
+                    <div className="header">
+                        New Posts
+                    </div>
+                    <div className="header-sideBar header-right">  
+                        <Link to="/posts/new" className="btn btn-info"> New Post </Link>
+                    </div>
+                    <div className="header-sideBar header-left">  
+                        <Link to="/posts/new" className="btn btn-info"> New Post </Link>
+                    </div>
+                </div
+
+*/
+
 function mapStateToProps(state){
     return {posts: state.posts};
 }
 
-function mapDispatchToProps(dispatch){
-    return bindActionCreators({fetchPosts},dispatch);
-}
+//we dont use this function in favor of using the shortcut
+// function mapDispatchToProps(dispatch){
+//     return bindActionCreators({fetchPosts},dispatch);
+// }
 
 
 //note that this is an action creator shortcut instead of writing the mapDispatchToProps function where we just pass the action creactor directly into the connect function
